@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class OutputController {
 
     @PostMapping("/output")
-    public String postOutput(@RequestParam("inputValue") String inputValue, Model model) {
-        model.addAttribute("Thymeleaf", "Thymeleaf課題");
-        model.addAttribute("previousValue", inputValue);
+    public String postOutput(@RequestParam(name = "previous", required = false) String val, Model model) {
+
+        model.addAttribute("previous", val);
+
         return "output";
     }
 }
